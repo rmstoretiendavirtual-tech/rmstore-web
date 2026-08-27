@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d0f12" />
+  <meta name="description" content="RM STORE | Laptops y Tecnología. Equipos seminuevos seleccionados, revisados y probados. Entregas en Lima y envíos a todo el Perú." />
+  <title>RM STORE | Laptops y Tecnología</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="RM STORE">
+        <span class="brand-mark">RM</span>
+        <span class="brand-copy">
+          <strong>STORE</strong>
+          <small>Laptops y Tecnología</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#garantia">Garantía</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn btn-small btn-primary" id="nav-whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-grid container">
+        <div class="hero-copy">
+          <div class="eyebrow">Tecnología seminueva seleccionada</div>
+          <h1>Equipos empresariales que todavía tienen mucho por ofrecer.</h1>
+          <p>
+            Laptops, workstations, tablets y tecnología revisada y probada.
+            Fotos reales, información clara y atención directa.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#catalogo">Ver catálogo</a>
+            <a class="btn btn-secondary" id="hero-whatsapp" href="#" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+          </div>
+          <div class="trust-row">
+            <span>✓ Equipos revisados</span>
+            <span>✓ 60 días de garantía</span>
+            <span>✓ Envíos a todo el Perú</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="glow"></div>
+          <div class="laptop">
+            <div class="screen">
+              <div class="screen-brand">RM <span>STORE</span></div>
+              <div class="screen-line"></div>
+              <div class="screen-copy">Laptops y Tecnología</div>
+            </div>
+            <div class="base"></div>
+          </div>
+          <div class="floating-card card-a">
+            <span class="mini-icon">⚡</span>
+            <div><strong>Listos para usar</strong><small>Revisados y probados</small></div>
+          </div>
+          <div class="floating-card card-b">
+            <span class="mini-icon">🛡</span>
+            <div><strong>Garantía</strong><small>60 días</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits">
+      <div class="container benefits-grid">
+        <article>
+          <div class="icon">✓</div>
+          <div><strong>Equipos seleccionados</strong><span>Revisamos funcionamiento y condición antes de publicar.</span></div>
+        </article>
+        <article>
+          <div class="icon">◈</div>
+          <div><strong>Fotos reales</strong><span>Ves el equipo que estás consultando, no una foto genérica.</span></div>
+        </article>
+        <article>
+          <div class="icon">▣</div>
+          <div><strong>Entrega y envíos</strong><span>Entregas coordinadas en Lima y envíos a todo el Perú.</span></div>
+        </article>
+        <article>
+          <div class="icon">↗</div>
+          <div><strong>Atención directa</strong><span>Consulta disponibilidad y detalles por WhatsApp.</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="catalogo">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Catálogo</div>
+            <h2>Equipos disponibles</h2>
+          </div>
+          <p>Busca por modelo o filtra por categoría. Los productos de esta V1 son ejemplos editables.</p>
+        </div>
+
+        <div class="catalog-toolbar">
+          <label class="search">
+            <span>⌕</span>
+            <input id="searchInput" type="search" placeholder="Buscar ThinkPad, Dell, iPad..." autocomplete="off" />
+          </label>
+          <div class="filters" role="group" aria-label="Filtros de catálogo">
+            <button class="filter active" data-filter="all">Todos</button>
+            <button class="filter" data-filter="laptop">Laptops</button>
+            <button class="filter" data-filter="workstation">Workstations</button>
+            <button class="filter" data-filter="tablet">Tablets</button>
+          </div>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+        <div class="empty-state" id="emptyState" hidden>No encontramos equipos con ese filtro.</div>
+      </div>
+    </section>
+
+    <section class="section dark-section" id="garantia">
+      <div class="container assurance-grid">
+        <div>
+          <div class="eyebrow">Compra con confianza</div>
+          <h2>60 días de garantía</h2>
+          <p>
+            Cada equipo se entrega revisado y probado. La garantía cubre fallas de funcionamiento
+            según nuestras políticas de venta y garantía.
+          </p>
+          <p class="fine-print">
+            La batería es un componente consumible. El estado restante y la autonomía no están garantizados.
+          </p>
+        </div>
+        <div class="process-card">
+          <div class="process-item"><span>01</span><div><strong>Revisión</strong><small>Pruebas de funcionamiento general.</small></div></div>
+          <div class="process-item"><span>02</span><div><strong>Preparación</strong><small>Limpieza y puesta a punto del equipo.</small></div></div>
+          <div class="process-item"><span>03</span><div><strong>Publicación</strong><small>Fotos reales y especificaciones verificadas.</small></div></div>
+          <div class="process-item"><span>04</span><div><strong>Entrega</strong><small>Coordinación directa con el cliente.</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="nosotros">
+      <div class="container about-grid">
+        <div class="about-card">
+          <div class="big-number">RM</div>
+          <div class="about-label">STORE</div>
+          <div class="about-sub">Laptops y Tecnología</div>
+        </div>
+        <div>
+          <div class="eyebrow">Sobre nosotros</div>
+          <h2>Tecnología seleccionada, presentada con transparencia.</h2>
+          <p>
+            En RM STORE nos enfocamos en equipos empresariales y tecnología seminueva.
+            Nuestro objetivo es ofrecer productos funcionales, bien presentados y con información clara para que puedas elegir con confianza.
+          </p>
+          <div class="chips">
+            <span>ThinkPad</span><span>Latitude</span><span>Workstations</span><span>Tablets</span><span>Smartphones</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-section" id="contacto">
+      <div class="container cta">
+        <div>
+          <div class="eyebrow">¿Buscas un equipo específico?</div>
+          <h2>Escríbenos y consulta disponibilidad.</h2>
+          <p>Atención directa para compras, consultas, entregas y envíos.</p>
+        </div>
+        <a class="btn btn-primary btn-large" id="cta-whatsapp" href="#" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="brand footer-brand">
+        <span class="brand-mark">RM</span>
+        <span class="brand-copy"><strong>STORE</strong><small>Laptops y Tecnología</small></span>
+      </div>
+      <div class="footer-links">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#garantia">Garantía</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="footer-copy">
+        <span>© <span id="year"></span> RM STORE.</span>
+        <span>rmstore.pe</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" id="float-whatsapp" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
