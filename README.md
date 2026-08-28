@@ -1,35 +1,19 @@
-# RM STORE WEB V2
+# RM STORE WEB V2.1
 
-Sitio web estático para GitHub Pages conectado a Supabase.
+Actualización sobre V2 para GitHub Pages + Supabase.
 
-## Archivos principales
+## Cambios V2.1
+- Nuevo hero: “Equipos seleccionados. Rendimiento comprobado.”
+- Nuevo texto comercial del encabezado.
+- Galería de producto con miniaturas activas.
+- Navegación anterior/siguiente entre fotografías.
+- Click en foto principal para abrir vista ampliada a pantalla completa.
+- Navegación con flechas del teclado y cierre con Esc.
+- Condición numérica se muestra como X/10.
+- Batería numérica se muestra como X%.
+- Descripciones conservan saltos de línea.
+- Mejoras de visualización en móviles.
+- Se mantiene el panel administrador y toda la integración Supabase existente.
 
-- `index.html` — tienda pública.
-- `admin.html` — panel privado.
-- `assets/config.js` — URL del proyecto, Publishable Key y WhatsApp.
-- `assets/app.js` — catálogo público.
-- `assets/admin.js` — login, CRUD y carga de fotografías.
-- `assets/styles.css` — diseño.
-
-## Publicación en GitHub Pages
-
-Reemplaza los archivos de la V1 en el repositorio `rmstore-web` por los de esta carpeta y realiza un commit.
-GitHub Pages publicará los cambios automáticamente desde `main`.
-
-El panel administrativo quedará en:
-
-`/admin.html`
-
-## Seguridad
-
-La Publishable Key puede estar en el navegador. La seguridad depende de RLS en Supabase.
-No colocar nunca Secret Key / service_role ni contraseñas en estos archivos.
-
-## Fotografías
-
-El panel convierte las imágenes a WebP y limita el lado mayor a 1600 px antes de subirlas al bucket `productos`.
-La base de datos guarda las rutas internas del bucket en la columna `imagenes`.
-
-## WhatsApp
-
-El número está en `assets/config.js`.
+## Publicación
+Sube/reemplaza estos archivos en el repositorio actual de GitHub Pages conservando la misma estructura.

@@ -26,8 +26,8 @@
     <section class="hero" id="inicio">
       <div class="hero-copy">
         <p class="eyebrow">TECNOLOGÍA SEMINUEVA SELECCIONADA</p>
-        <h1>Equipos empresariales que todavía tienen mucho por ofrecer.</h1>
-        <p>Equipos revisados y probados, con información clara de estado y garantía para comprar con confianza.</p>
+        <h1>Equipos seleccionados. Rendimiento comprobado.</h1>
+        <p>Laptops y tecnología seminueva revisadas, probadas y listas para trabajar, con información clara de estado y garantía.</p>
         <div class="hero-actions">
           <a class="btn" href="#catalogo">Ver catálogo</a>
           <a class="btn btn-ghost" id="waHero" href="#" target="_blank" rel="noopener">Consultar por WhatsApp</a>
@@ -106,6 +106,16 @@
   <dialog id="productModal" class="product-modal">
     <button class="modal-close" id="modalClose" aria-label="Cerrar">×</button>
     <div id="modalContent"></div>
+  </dialog>
+
+  <dialog id="imageLightbox" class="image-lightbox" aria-label="Galería de imágenes">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar imagen">×</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Imagen anterior">‹</button>
+    <figure class="lightbox-stage">
+      <img id="lightboxImage" alt="Vista ampliada del producto">
+      <figcaption id="lightboxCounter"></figcaption>
+    </figure>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Imagen siguiente">›</button>
   </dialog>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

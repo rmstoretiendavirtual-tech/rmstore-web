@@ -10,9 +10,14 @@
   const filters = document.getElementById("filters");
   const modal = document.getElementById("productModal");
   const modalContent = document.getElementById("modalContent");
+  const lightbox = document.getElementById("imageLightbox");
+  const lightboxImage = document.getElementById("lightboxImage");
+  const lightboxCounter = document.getElementById("lightboxCounter");
 
   let products = [];
   let category = "Todos";
+  let activeImages = [];
+  let activeImageIndex = 0;
 
   const wa = (text) => `https://wa.me/${cfg.WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
   ["waTop","waHero","waBottom"].forEach(id => {
@@ -23,6 +28,20 @@
   const esc = (v="") => String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
   const publicUrl = (path) => path ? client.storage.from(bucket).getPublicUrl(path).data.publicUrl : "";
   const money = (v) => (v === null || v === undefined || v === "") ? "Consultar" : `S/ ${Number(v).toLocaleString("es-PE",{minimumFractionDigits:0,maximumFractionDigits:2})}`;
+  const formatCondition = (v) => {
+    if (v === null || v === undefined || String(v).trim() === "") return "";
+    const s = String(v).trim();
+    if (/^\d+(?:[.,]\d+)?\s*\/\s*10$/i.test(s)) return s.replace(/\s+/g, "");
+    if (/^\d+(?:[.,]\d+)?$/.test(s)) return `${s.replace(',', '.')}/10`;
+    return s;
+  };
+  const formatBattery = (v) => {
+    if (v === null || v === undefined || String(v).trim() === "") return "";
+    const s = String(v).trim();
+    if (/^\d+(?:[.,]\d+)?\s*%$/.test(s)) return s.replace(/\s+/g, "");
+    if (/^\d+(?:[.,]\d+)?$/.test(s)) return `${s.replace(',', '.')}%`;
+    return s;
+  };
 
   async function loadProducts(){
     status.hidden = false; grid.hidden = true;
@@ -90,30 +109,62 @@
     grid.innerHTML = list.map(card).join("");
   }
 
+  function setMainImage(index){
+    if(!activeImages.length) return;
+    activeImageIndex = (index + activeImages.length) % activeImages.length;
+    const mainImg = document.getElementById("modalMainImage");
+    if(mainImg) mainImg.src = activeImages[activeImageIndex];
+    modalContent.querySelectorAll("[data-thumb]").forEach((thumb,i)=>{
+      thumb.classList.toggle("active", i === activeImageIndex);
+      thumb.setAttribute("aria-current", i === activeImageIndex ? "true" : "false");
+    });
+  }
+
+  function showLightbox(index = activeImageIndex){
+    if(!activeImages.length) return;
+    activeImageIndex = (index + activeImages.length) % activeImages.length;
+    lightboxImage.src = activeImages[activeImageIndex];
+    lightboxCounter.textContent = `${activeImageIndex + 1} / ${activeImages.length}`;
+    document.getElementById("lightboxPrev").hidden = activeImages.length < 2;
+    document.getElementById("lightboxNext").hidden = activeImages.length < 2;
+    if(!lightbox.open) lightbox.showModal();
+  }
+
+  function moveLightbox(step){
+    if(!activeImages.length) return;
+    activeImageIndex = (activeImageIndex + step + activeImages.length) % activeImages.length;
+    lightboxImage.src = activeImages[activeImageIndex];
+    lightboxCounter.textContent = `${activeImageIndex + 1} / ${activeImages.length}`;
+    setMainImage(activeImageIndex);
+  }
+
   function openProduct(id){
     const p = products.find(x => String(x.id) === String(id));
     if(!p) return;
     const imgs = (p.imagenes || []).map(publicUrl);
+    activeImages = imgs;
+    activeImageIndex = 0;
     const main = imgs[0] || "";
     const details = [
       ["Procesador",p.procesador],["RAM",p.ram],["Almacenamiento",p.almacenamiento],["Pantalla",p.pantalla],
-      ["Gráficos",p.graficos],["Condición",p.condicion],["Batería",p.bateria],["Incluye",p.incluye]
+      ["Gráficos",p.graficos],["Condición",formatCondition(p.condicion)],["Batería",formatBattery(p.bateria)],["Incluye",p.incluye]
     ].filter(([,v])=>v);
 
     modalContent.innerHTML = `<div class="modal-layout">
       <div class="modal-gallery">
-        ${main ? `<img id="modalMainImage" class="modal-main-image" src="${main}" alt="${esc(p.modelo)}">` : '<div class="modal-main-image product-placeholder">RM STORE</div>'}
-        ${imgs.length>1 ? `<div class="modal-thumbs">${imgs.map((u,i)=>`<img src="${u}" data-thumb="${i}" alt="Foto ${i+1}">`).join("")}</div>`:""}
+        ${main ? `<button class="main-image-button" type="button" data-enlarge="0" aria-label="Ampliar imagen"><img id="modalMainImage" class="modal-main-image" src="${main}" alt="${esc(p.modelo)}"><span class="zoom-hint">⌕ Ampliar</span></button>` : '<div class="modal-main-image product-placeholder">RM STORE</div>'}
+        ${imgs.length>1 ? `<div class="modal-thumbs">${imgs.map((u,i)=>`<button type="button" class="thumb-button ${i===0?'active':''}" data-thumb="${i}" aria-label="Ver foto ${i+1}" aria-current="${i===0?'true':'false'}"><img src="${u}" alt="Foto ${i+1}"></button>`).join("")}</div>`:""}
+        ${imgs.length>1 ? `<div class="gallery-controls"><button type="button" data-gallery-step="-1">← Anterior</button><span>${imgs.length} fotos</span><button type="button" data-gallery-step="1">Siguiente →</button></div>`:""}
       </div>
       <div class="modal-info">
         <p class="eyebrow">${esc(p.marca)} · ${esc(p.categoria)}</p>
         <h2>${esc(p.modelo)}</h2>
-        <div class="badges" style="position:static;margin-bottom:12px">
+        <div class="badges modal-badges">
           <span class="badge ${p.estado==="Disponible"?"available":p.estado==="Reservado"?"reserved":"sold"}">${esc(p.estado)}</span>
         </div>
         <div class="detail-list">${details.map(([k,v])=>`<div class="detail"><small>${esc(k)}</small><strong>${esc(v)}</strong></div>`).join("")}</div>
-        ${p.descripcion ? `<p class="muted">${esc(p.descripcion)}</p>`:""}
-        <div class="product-footer">
+        ${p.descripcion ? `<p class="muted product-description">${esc(p.descripcion)}</p>`:""}
+        <div class="product-footer modal-footer">
           <span class="price">${money(p.precio)}</span>
           <a class="btn" target="_blank" rel="noopener" href="${wa(`Hola RM STORE, quisiera información sobre ${p.marca} ${p.modelo}.`)}">Consultar</a>
         </div>
@@ -136,11 +187,31 @@
   });
   modalContent.addEventListener("click", e => {
     const thumb = e.target.closest("[data-thumb]");
-    const mainImg = document.getElementById("modalMainImage");
-    if(thumb && mainImg) mainImg.src = thumb.src;
+    if(thumb){ setMainImage(Number(thumb.dataset.thumb)); return; }
+    const enlarge = e.target.closest("[data-enlarge]");
+    if(enlarge){ showLightbox(activeImageIndex); return; }
+    const step = e.target.closest("[data-gallery-step]");
+    if(step) setMainImage(activeImageIndex + Number(step.dataset.galleryStep));
   });
+
   document.getElementById("modalClose").addEventListener("click",()=>modal.close());
   modal.addEventListener("click", e => { if(e.target === modal) modal.close(); });
+  document.getElementById("lightboxClose").addEventListener("click",()=>lightbox.close());
+  document.getElementById("lightboxPrev").addEventListener("click",()=>moveLightbox(-1));
+  document.getElementById("lightboxNext").addEventListener("click",()=>moveLightbox(1));
+  lightbox.addEventListener("click", e => { if(e.target === lightbox) lightbox.close(); });
+
+  document.addEventListener("keydown", e => {
+    if(lightbox.open){
+      if(e.key === "ArrowLeft") moveLightbox(-1);
+      if(e.key === "ArrowRight") moveLightbox(1);
+      return;
+    }
+    if(modal.open && activeImages.length > 1){
+      if(e.key === "ArrowLeft") setMainImage(activeImageIndex - 1);
+      if(e.key === "ArrowRight") setMainImage(activeImageIndex + 1);
+    }
+  });
 
   loadProducts();
 })();
