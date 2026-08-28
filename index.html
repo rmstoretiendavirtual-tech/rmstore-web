@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="RM STORE | Laptops y Tecnología — equipos seminuevos seleccionados, revisados y probados.">
+  <meta name="description" content="RM STORE | Laptops y Tecnología — tecnología seminueva seleccionada, revisada y probada.">
   <title>RM STORE | Laptops y Tecnología</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" href="assets/styles.css">
@@ -11,13 +11,11 @@
 <body>
   <header class="site-header">
     <a class="brand" href="#inicio" aria-label="RM STORE">
-      <span class="brand-mark">RM</span>
+      <img class="brand-logo" src="assets/rm-logo.png" alt="RM STORE">
       <span><strong>RM STORE</strong><small>Laptops y Tecnología</small></span>
     </a>
     <nav class="nav">
-      <a href="#catalogo">Catálogo</a>
-      <a href="#garantia">Garantía</a>
-      <a href="#nosotros">Nosotros</a>
+      <a href="#inicio">Inicio</a><a href="#catalogo">Catálogo</a><a href="#nosotros">Nosotros</a><a href="#garantia">Garantía</a>
       <a class="btn btn-small" id="waTop" href="#" target="_blank" rel="noopener">WhatsApp</a>
     </nav>
   </header>
@@ -26,100 +24,66 @@
     <section class="hero" id="inicio">
       <div class="hero-copy">
         <p class="eyebrow">TECNOLOGÍA SEMINUEVA SELECCIONADA</p>
-        <h1>Equipos seleccionados. Rendimiento comprobado.</h1>
-        <p>Laptops y tecnología seminueva revisadas, probadas y listas para trabajar, con información clara de estado y garantía.</p>
+        <h1>Equipos seleccionados.<br><span>Rendimiento comprobado.</span></h1>
+        <p>Laptops y tecnología seminueva revisadas, probadas y listas para rendir al máximo.</p>
+        <div class="hero-benefits">
+          <div><b>✓</b><strong>Equipos revisados</strong><small>Probados y verificados</small></div>
+          <div><b>◉</b><strong>60 días de garantía</strong><small>Respaldo por fallas de hardware</small></div>
+          <div><b>▣</b><strong>Envíos a todo el Perú</strong><small>Entregas en Lima y provincias</small></div>
+        </div>
         <div class="hero-actions">
           <a class="btn" href="#catalogo">Ver catálogo</a>
-          <a class="btn btn-ghost" id="waHero" href="#" target="_blank" rel="noopener">Consultar por WhatsApp</a>
-        </div>
-        <div class="trust-strip">
-          <span>✓ 60 días de garantía</span>
-          <span>✓ Entregas en Lima</span>
-          <span>✓ Envíos a todo el Perú</span>
+          <a class="btn btn-ghost" href="#como-comprar">Cómo comprar →</a>
         </div>
       </div>
       <div class="hero-visual" aria-hidden="true">
-        <div class="glow"></div>
-        <div class="device-card">
-          <div class="device-screen"><span>RM STORE</span></div>
-          <div class="device-base"></div>
+        <div class="tech-grid"></div><div class="glow"></div>
+        <div class="laptop-mock">
+          <div class="laptop-screen">
+            <div class="mock-head"><span>RM STORE</span><small>CATÁLOGO</small></div>
+            <div class="mock-title">Equipos disponibles</div>
+            <div class="mock-chips"><i></i><i></i><i></i><i></i></div>
+            <div class="mock-products"><div><span></span><b>ThinkPad</b></div><div><span></span><b>ThinkPad</b></div></div>
+          </div><div class="laptop-base"></div>
         </div>
       </div>
+    </section>
+
+    <section class="confidence-bar">
+      <div><strong>Garantía 60 días</strong><span>Por fallas de hardware</span></div>
+      <div><strong>Equipos listos para usar</strong><span>Instalados y probados</span></div>
+      <div><strong>Te asesoramos</strong><span>Antes y después de tu compra</span></div>
+      <div><strong>Embalaje seguro</strong><span>Protegemos tu equipo</span></div>
     </section>
 
     <section class="section" id="catalogo">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">CATÁLOGO</p>
-          <h2>Equipos disponibles</h2>
-        </div>
-        <p id="catalogCount" class="muted">Cargando catálogo…</p>
-      </div>
-
+      <div class="section-heading"><div><p class="eyebrow">CATÁLOGO</p><h2>Equipos disponibles</h2></div><p id="catalogCount" class="muted">Cargando catálogo…</p></div>
       <div class="catalog-tools">
-        <label class="search">
-          <span>⌕</span>
-          <input id="searchInput" type="search" placeholder="Buscar por marca, modelo, procesador…">
-        </label>
+        <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Buscar por marca, modelo, procesador…"></label>
         <div class="filters" id="filters">
-          <button class="chip active" data-category="Todos">Todos</button>
-          <button class="chip" data-category="Laptop">Laptops</button>
-          <button class="chip" data-category="Workstation">Workstations</button>
-          <button class="chip" data-category="Tablet">Tablets</button>
-          <button class="chip" data-category="Celular">Celulares</button>
+          <button class="chip active" data-category="Todos">Todos</button><button class="chip" data-category="Laptop">Laptop</button><button class="chip" data-category="Workstation">Workstation</button><button class="chip" data-category="Tablet">Tablet</button><button class="chip" data-category="Celular">Celular</button><button class="chip" data-category="SSD / Almacenamiento">SSD / Almacenamiento</button><button class="chip" data-category="Cargadores">Cargadores</button><button class="chip" data-category="Accesorios y Repuestos">Accesorios y Repuestos</button>
         </div>
       </div>
-
-      <div id="catalogStatus" class="status-card">Conectando con el catálogo…</div>
-      <div id="productGrid" class="product-grid" hidden></div>
+      <div id="catalogStatus" class="status-card">Conectando con el catálogo…</div><div id="productGrid" class="product-grid" hidden></div>
     </section>
 
-    <section class="section split" id="garantia">
-      <div>
-        <p class="eyebrow">GARANTÍA RM STORE</p>
-        <h2>Compra con información clara.</h2>
-        <p>Todos los equipos se revisan y prueban antes de ser publicados. La garantía general es de 60 días según nuestras políticas vigentes.</p>
-      </div>
-      <div class="info-card">
-        <h3>Baterías</h3>
-        <p>La batería es un consumible y se vende según su estado actual. El estado restante y la autonomía no están garantizados.</p>
-      </div>
-    </section>
+    <section class="section process" id="como-comprar"><div><p class="eyebrow">CÓMO COMPRAR</p><h2>Simple, claro y rápido.</h2></div><div class="process-grid"><article><b>01</b><h3>Elige tu equipo</h3><p>Revisa fotos reales, características, estado y precio.</p></article><article><b>02</b><h3>Consulta por WhatsApp</h3><p>Te confirmamos disponibilidad y resolvemos tus dudas.</p></article><article><b>03</b><h3>Recibe tu compra</h3><p>Entrega coordinada en Lima o envío seguro a provincias.</p></article></div></section>
 
-    <section class="section split" id="nosotros">
-      <div>
-        <p class="eyebrow">RM STORE</p>
-        <h2>Laptops y tecnología seleccionada.</h2>
-      </div>
-      <div>
-        <p class="muted">Especialistas en equipos empresariales seminuevos y tecnología seleccionada. Entregas en Lima y envíos a todo el Perú.</p>
-        <a class="btn" id="waBottom" href="#" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+    <section class="section split" id="nosotros"><div><p class="eyebrow">RM STORE</p><h2>Laptops y tecnología seleccionada.</h2></div><div><p class="muted">Seleccionamos, revisamos y probamos cada equipo antes de publicarlo. Mostramos fotografías reales e información clara para que sepas exactamente qué estás comprando.</p><a class="btn" id="waBottom" href="#" target="_blank" rel="noopener">Hablar por WhatsApp</a></div></section>
+
+    <section class="section policy-section" id="garantia">
+      <div class="section-heading"><div><p class="eyebrow">POLÍTICAS RM STORE</p><h2>Venta y garantía</h2></div><p class="muted policy-intro">Todos nuestros equipos son revisados, probados y acondicionados antes de su entrega.</p></div>
+      <div class="policy-grid">
+        <article><h3>Garantía general — 60 días</h3><p>Cubre fallas de hardware desde la fecha de entrega y previa evaluación técnica de RM STORE. Según corresponda, se realizará la reparación o reemplazo del componente afectado. La garantía no implica el reemplazo inmediato del equipo.</p></article>
+        <article><h3>Batería y autonomía</h3><p>La batería es un artículo consumible y se entrega en el estado informado al momento de la venta. Los porcentajes de salud o autonomía son referenciales y no constituyen garantía de duración por carga.</p></article>
+        <article><h3>La garantía no cubre</h3><p>Golpes, caídas, líquidos, humedad, pantallas o conectores dañados físicamente, daños eléctricos por cargadores incompatibles, manipulación por terceros, software, malware, desgaste estético ni pérdida de información.</p></article>
+        <article><h3>Procedimiento y conformidad</h3><p>Todo reclamo requiere evaluación técnica previa. El cliente debe respaldar su información antes de entregar el equipo. La recepción del producto implica conformidad con el estado físico previamente informado y con las condiciones de garantía.</p></article>
       </div>
     </section>
   </main>
+  <footer><div class="footer-brand"><img src="assets/rm-logo.png" alt=""><strong>RM STORE</strong><span>· Laptops y Tecnología</span></div><div>rmstore.pe</div></footer>
 
-  <footer>
-    <div><strong>RM STORE</strong> <span>· Laptops y Tecnología</span></div>
-    <div>rmstore.pe</div>
-  </footer>
-
-  <dialog id="productModal" class="product-modal">
-    <button class="modal-close" id="modalClose" aria-label="Cerrar">×</button>
-    <div id="modalContent"></div>
-  </dialog>
-
-  <dialog id="imageLightbox" class="image-lightbox" aria-label="Galería de imágenes">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar imagen">×</button>
-    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Imagen anterior">‹</button>
-    <figure class="lightbox-stage">
-      <img id="lightboxImage" alt="Vista ampliada del producto">
-      <figcaption id="lightboxCounter"></figcaption>
-    </figure>
-    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Imagen siguiente">›</button>
-  </dialog>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="assets/config.js"></script>
-  <script src="assets/app.js"></script>
-</body>
-</html>
+  <dialog id="productModal" class="product-modal"><button class="modal-close" id="modalClose" aria-label="Cerrar">×</button><div id="modalContent"></div></dialog>
+  <dialog id="imageLightbox" class="image-lightbox"><button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">×</button><button class="lightbox-arrow left" id="lightboxPrev" aria-label="Anterior">‹</button><img id="lightboxImage" alt="Imagen ampliada"><button class="lightbox-arrow right" id="lightboxNext" aria-label="Siguiente">›</button><div id="lightboxCounter" class="lightbox-counter"></div></dialog>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="assets/config.js"></script><script src="assets/app.js"></script>
+</body></html>

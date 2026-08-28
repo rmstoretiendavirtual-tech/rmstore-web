@@ -1,19 +1,17 @@
-# RM STORE WEB V2.1
+# RM STORE Web V3
 
-Actualización sobre V2 para GitHub Pages + Supabase.
+Versión visual renovada de RM STORE | Laptops y Tecnología.
 
-## Cambios V2.1
-- Nuevo hero: “Equipos seleccionados. Rendimiento comprobado.”
-- Nuevo texto comercial del encabezado.
-- Galería de producto con miniaturas activas.
-- Navegación anterior/siguiente entre fotografías.
-- Click en foto principal para abrir vista ampliada a pantalla completa.
-- Navegación con flechas del teclado y cierre con Esc.
-- Condición numérica se muestra como X/10.
-- Batería numérica se muestra como X%.
-- Descripciones conservan saltos de línea.
-- Mejoras de visualización en móviles.
-- Se mantiene el panel administrador y toda la integración Supabase existente.
+## Incluye
+- Diseño premium negro + amarillo/dorado.
+- Logo RM STORE integrado.
+- Hero: “Equipos seleccionados. Rendimiento comprobado.”
+- Catálogo conectado a Supabase.
+- Fotografías con proporción uniforme sin deformación.
+- Galería ampliable con miniaturas y navegación.
+- Categorías: Laptop, Workstation, Tablet, Celular, SSD / Almacenamiento, Cargadores, Accesorios y Repuestos.
+- Panel administrador conectado al inventario existente.
+- Políticas de Venta y Garantía integradas.
+- Diseño responsive para PC y celular.
 
-## Publicación
-Sube/reemplaza estos archivos en el repositorio actual de GitHub Pages conservando la misma estructura.
+Subir todos los archivos a la raíz del repositorio GitHub Pages reemplazando la versión anterior.
