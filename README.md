@@ -1,36 +1,35 @@
-# RM STORE | Web V1
+# RM STORE WEB V2
 
-Primera versión estática para GitHub Pages.
+Sitio web estático para GitHub Pages conectado a Supabase.
 
-## Archivos
-- `index.html`: estructura principal.
-- `assets/styles.css`: diseño responsive.
-- `assets/app.js`: catálogo, filtros y WhatsApp.
+## Archivos principales
 
-## Antes de publicar
-Abre `assets/app.js` y cambia:
-`const WHATSAPP_NUMBER = "51999999999";`
-por el número real de RM STORE, en formato internacional, sin `+`, espacios ni guiones.
+- `index.html` — tienda pública.
+- `admin.html` — panel privado.
+- `assets/config.js` — URL del proyecto, Publishable Key y WhatsApp.
+- `assets/app.js` — catálogo público.
+- `assets/admin.js` — login, CRUD y carga de fotografías.
+- `assets/styles.css` — diseño.
 
-Ejemplo Perú:
-`51987654321`
+## Publicación en GitHub Pages
 
-## Publicar en GitHub
-1. Entra al repositorio `rmstore-web`.
-2. Usa **Add file > Upload files**.
-3. Sube TODO el contenido de esta carpeta, manteniendo la carpeta `assets`.
-4. Haz clic en **Commit changes**.
-5. Ve a **Settings > Pages**.
-6. En **Build and deployment / Source**, elige **Deploy from a branch**.
-7. Branch: `main`; Folder: `/ (root)`.
-8. Guarda.
-9. GitHub mostrará la dirección temporal de la página.
+Reemplaza los archivos de la V1 en el repositorio `rmstore-web` por los de esta carpeta y realiza un commit.
+GitHub Pages publicará los cambios automáticamente desde `main`.
 
-## Importante
-No conectes `rmstore.pe` todavía. Primero revisa la web en la dirección temporal de GitHub Pages.
+El panel administrativo quedará en:
 
-## Productos
-Los productos incluidos son de demostración. Se editan en el arreglo `products` dentro de `assets/app.js`.
+`/admin.html`
 
-## Fotos
-Esta V1 usa un marcador visual en lugar de fotos. En la V2 se agregan las fotos reales de cada equipo.
+## Seguridad
+
+La Publishable Key puede estar en el navegador. La seguridad depende de RLS en Supabase.
+No colocar nunca Secret Key / service_role ni contraseñas en estos archivos.
+
+## Fotografías
+
+El panel convierte las imágenes a WebP y limita el lado mayor a 1600 px antes de subirlas al bucket `productos`.
+La base de datos guarda las rutas internas del bucket en la columna `imagenes`.
+
+## WhatsApp
+
+El número está en `assets/config.js`.
