@@ -52,8 +52,8 @@
             <input type="hidden" id="productId">
 
             <div class="form-grid">
-              <label>Marca *<input id="marca" list="marcaOptions" required placeholder="Seleccionar o escribir marca" autocomplete="off"><datalist id="marcaOptions"></datalist></label>
-              <label>Modelo *<input id="modelo" list="modeloOptions" required placeholder="Buscar o agregar modelo" autocomplete="off"><datalist id="modeloOptions"></datalist></label>
+              <label>Marca *<input id="marca" required placeholder="Lenovo"></label>
+              <label>Modelo *<input id="modelo" required placeholder="ThinkPad T14 Gen 2"></label>
               <label>Categoría *
                 <select id="categoria" required>
                   <option>Laptop</option>
@@ -73,14 +73,10 @@
                 </select>
               </label>
 
-              <label>Procesador<input id="procesador" list="procesadorOptions" placeholder="Buscar o agregar procesador" autocomplete="off"><datalist id="procesadorOptions"></datalist></label>
-              <label>RAM<input id="ram" list="ramOptions" placeholder="Ej. 16 GB DDR4"><datalist id="ramOptions"></datalist></label>
-              <label>Almacenamiento<input id="almacenamiento" list="almacenamientoOptions" placeholder="Ej. 512 GB SSD NVMe"><datalist id="almacenamientoOptions"></datalist></label>
-              <label>Tamaño de pantalla<input id="pantallaTamano" list="pantallaTamanoOptions" placeholder='Ej. 14"'><datalist id="pantallaTamanoOptions"></datalist></label>
-              <label>Resolución<input id="pantallaResolucion" list="pantallaResolucionOptions" placeholder="Ej. 1920 × 1200"><datalist id="pantallaResolucionOptions"></datalist></label>
-              <label>Tecnología de pantalla<select id="pantallaTipo"><option value="">No especificado</option><option>IPS</option><option>OLED</option><option>AMOLED</option><option>TN</option><option>VA</option><option>Mini-LED</option><option>LTPS</option><option>Otro</option></select></label>
-              <label>Función táctil<select id="pantallaTactil"><option value="">No especificado</option><option>No táctil</option><option>Táctil</option></select></label>
-              <label>Descripción de pantalla (opcional)<input id="pantallaExtra" placeholder="Otros detalles de pantalla"></label>
+              <label>Procesador<input id="procesador" placeholder="Intel Core i7-1165G7"></label>
+              <label>RAM<input id="ram" placeholder="16 GB"></label>
+              <label>Almacenamiento<input id="almacenamiento" placeholder="512 GB SSD NVMe"></label>
+              <label>Pantalla<input id="pantalla" placeholder='14" FHD IPS'></label>
               <label>Gráficos<input id="graficos" placeholder="Intel Iris Xe"></label>
               <label>Precio (S/)<input id="precio" type="number" min="0" step="0.01" placeholder="0.00"></label>
               <label>Condición<input id="condicion" placeholder="Seminuevo / 9.5 de 10"></label>
@@ -125,7 +121,6 @@
             <span>⌕</span>
             <input id="adminSearch" type="search" placeholder="Buscar producto…">
           </label>
-          <p class="muted small">Orden libre: usa ↑ y ↓ para mover productos, incluso vendidos. Después pulsa <strong>Guardar orden</strong>.</p>
           <div class="sort-actions"><button id="saveOrderBtn" type="button" class="btn btn-small">Guardar orden</button><span id="orderMessage" class="form-message" role="status"></span></div>
           <div id="adminList" class="admin-list"></div>
         </section>
@@ -135,6 +130,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="assets/config.js"></script>
-  <script src="assets/admin.js?v=522blackgold"></script>
+  <script src="assets/admin.js?v=adminorder2"></script>
 </body>
 </html>
