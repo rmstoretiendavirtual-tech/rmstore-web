@@ -1,17 +1,9 @@
-# RM STORE Web V4 — Circuit Tech Edition
+# RM STORE WEB V5 — Azul Tecnológico
 
-Versión visual renovada de RM STORE | Laptops y Tecnología.
+Actualización visual de V4: hero compacto sin imagen, paleta azul/cian, tarjetas de catálogo renovadas, consulta por WhatsApp y diseño responsive.
 
-## Incluye
-- Diseño premium negro + amarillo/dorado.
-- Logo RM STORE integrado.
-- Hero: “Equipos seleccionados. Rendimiento comprobado.”
-- Catálogo conectado a Supabase.
-- Fotografías con proporción uniforme sin deformación.
-- Galería ampliable con miniaturas y navegación.
-- Categorías: Laptop, Workstation, Tablet, Celular, SSD / Almacenamiento, Cargadores, Accesorios y Repuestos.
-- Panel administrador conectado al inventario existente.
-- Políticas de Venta y Garantía integradas.
-- Diseño responsive para PC y celular.
+## Publicación
+Subir `index.html`, `admin.html`, `README.md`, `.nojekyll` y la carpeta `assets/` a la raíz del repositorio GitHub Pages existente, reemplazando los archivos homónimos. **Conservar el archivo CNAME que ya existe en GitHub** para no perder el dominio.
 
-Subir todos los archivos a la raíz del repositorio GitHub Pages reemplazando la versión anterior.
+## Datos
+Se conserva `assets/config.js` original, la conexión Supabase, los registros del inventario, el panel de administración y las políticas existentes. No subir contraseñas ni claves secretas.

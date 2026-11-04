@@ -91,8 +91,9 @@
         <div class="specs">${specs || "<span>Consulta especificaciones</span>"}</div>
         <div class="product-footer">
           <span class="price">${money(p.precio)}</span>
-          <button class="text-btn" data-open="${p.id}">Ver equipo →</button>
+          <button class="text-btn" data-open="${p.id}">Ver detalles →</button>
         </div>
+        <a class="card-whatsapp" href="${wa(`Hola RM STORE, quisiera consultar por ${p.marca} ${p.modelo}.`)}" target="_blank" rel="noopener">Consultar por WhatsApp <span aria-hidden="true">↗</span></a>
       </div>
     </article>`;
   }
