@@ -7,3 +7,6 @@ Subir `index.html`, `admin.html`, `README.md`, `.nojekyll` y la carpeta `assets/
 
 ## Datos
 Se conserva `assets/config.js` original, la conexión Supabase, los registros del inventario, el panel de administración y las políticas existentes. No subir contraseñas ni claves secretas.
+
+
+V5.1: Hero reorganizado en dos columnas (beneficios y CTA a la derecha); tarjetas de catálogo compactas, cuatro columnas en pantallas amplias. Sin cambios en Supabase ni lógica de inventario.
