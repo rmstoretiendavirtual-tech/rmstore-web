@@ -74,6 +74,44 @@
     fillOptions("pantallaTamano",screenSizes);fillOptions("pantallaResolucion",screenRes);
   }
   $("marca").addEventListener("input",refreshSuggestions);
+  // Combos visibles con búsqueda y entrada libre, sin cambiar el esquema de Supabase.
+  const comboIds=["marca","modelo","procesador","ram","almacenamiento","pantallaTamano","pantallaResolucion"];
+  function initCombos(){
+    comboIds.forEach(id=>{
+      const input=$(id), label=input.parentElement, listId=id+"Options";
+      input.removeAttribute("list"); // El datalist nativo no muestra flecha en algunos navegadores.
+      const wrapper=document.createElement("div");wrapper.className="rm-combo";
+      input.parentNode.insertBefore(wrapper,input);wrapper.appendChild(input);
+      const toggle=document.createElement("button");toggle.type="button";toggle.className="rm-combo-toggle";
+      toggle.setAttribute("aria-label","Mostrar opciones de "+id);toggle.textContent="▾";
+      const menu=document.createElement("div");menu.className="rm-combo-menu";menu.hidden=true;
+      wrapper.append(toggle,menu);
+      const close=()=>{menu.hidden=true;toggle.setAttribute("aria-expanded","false")};
+      const show=(filter="")=>{
+        const options=[...$(listId).options].map(o=>o.value).filter(Boolean);
+        const matches=filter?options.filter(v=>v.toLocaleLowerCase("es").includes(filter.toLocaleLowerCase("es"))):options;
+        menu.replaceChildren();
+        matches.slice(0,80).forEach(v=>{
+          const btn=document.createElement("button");btn.type="button";btn.className="rm-combo-option";btn.textContent=v;
+          btn.addEventListener("click",()=>{input.value=v;input.dispatchEvent(new Event("input",{bubbles:true}));input.dispatchEvent(new Event("change",{bubbles:true}));close();});
+          menu.appendChild(btn);
+        });
+        if(!matches.length){const msg=document.createElement("div");msg.className="rm-combo-empty";msg.textContent="Sin coincidencias. Puedes escribir un valor nuevo.";menu.appendChild(msg)}
+        menu.hidden=false;toggle.setAttribute("aria-expanded","true");
+      };
+      toggle.addEventListener("click",e=>{e.preventDefault();menu.hidden?show():close()});
+      input.addEventListener("focus",()=>show(input.value.trim()));
+      input.addEventListener("input",()=>show(input.value.trim()));
+      input.addEventListener("keydown",e=>{
+        if(e.key==="Escape")close();
+        if(e.key==="ArrowDown"&&menu.hidden){e.preventDefault();show(input.value.trim())}
+        if(e.key==="Enter"&&!menu.hidden){close()}
+      });
+      document.addEventListener("pointerdown",e=>{if(!wrapper.contains(e.target))close()});
+    });
+  }
+  initCombos();
+
   // No new database columns: screen details are encoded in the existing pantalla field.
   function buildScreen(){return [$("pantallaTamano").value.trim(),$("pantallaResolucion").value.trim(),$("pantallaTipo").value,$("pantallaTactil").value,$("pantallaExtra").value.trim()].join(" | ").replace(/(?: \| )+$/g,"").trim();}
   function parseScreen(value){
@@ -97,8 +135,9 @@
     try{
       // Sequential updates keep the existing Supabase schema and RLS intact.
       for(let i=0;i<products.length;i++){
-        const {error}=await client.from("productos").update({orden:i+1}).eq("id",products[i].id);
+        const {data:updated,error}=await client.from("productos").update({orden:i+1}).eq("id",products[i].id).select("id");
         if(error)throw error;
+        if(!updated?.length)throw new Error("Supabase no confirmó la actualización. Revisa los permisos de edición.");
       }
       orderDirty=false;setMsg($("orderMessage"),"Orden guardado. Actualiza la tienda para verlo.","success");
     }catch(e){setMsg($("orderMessage"),"No se pudo guardar todo el orden: "+(e.message||e),"error");}

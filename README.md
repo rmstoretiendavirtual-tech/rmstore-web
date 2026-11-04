@@ -22,3 +22,9 @@ Actualización del sitio y panel administrativo de RM STORE.
 - La lista de procesadores es una selección inicial amplia, no un inventario exhaustivo de todos los procesadores fabricados.
 - Para guardar el orden es necesario contar con permisos de actualización en Supabase.
 - Antes de anunciar comercialmente los 90 días, asegúrate de actualizar tus políticas y comprobantes de venta.
+
+
+Corrección V5.2.1: combos visibles con flecha, buscador y entrada libre; botones de orden siempre visibles; versión de archivos para evitar caché del navegador.
+
+
+V5.2.2: Tema Black & Gold aplicado a tienda y panel. Mantiene funciones de V5.2.1. No borrar CNAME de GitHub.
