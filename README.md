@@ -1,12 +1,24 @@
-# RM STORE WEB V5 — Azul Tecnológico
+# RM STORE V5.2 — Arctic Light
 
-Actualización visual de V4: hero compacto sin imagen, paleta azul/cian, tarjetas de catálogo renovadas, consulta por WhatsApp y diseño responsive.
+Actualización del sitio y panel administrativo de RM STORE.
 
-## Publicación
-Subir `index.html`, `admin.html`, `README.md`, `.nojekyll` y la carpeta `assets/` a la raíz del repositorio GitHub Pages existente, reemplazando los archivos homónimos. **Conservar el archivo CNAME que ya existe en GitHub** para no perder el dominio.
+## Publicación en GitHub Pages
+1. Haz una copia de seguridad de la versión actual.
+2. Descomprime este ZIP y sube su contenido a la raíz del repositorio en GitHub (reemplazando archivos coincidentes).
+3. **No elimines ni reemplaces el archivo CNAME** que ya existe en GitHub.
+4. Espera a GitHub Pages y recarga con Ctrl+F5.
 
-## Datos
-Se conserva `assets/config.js` original, la conexión Supabase, los registros del inventario, el panel de administración y las políticas existentes. No subir contraseñas ni claves secretas.
+## Cambios
+- Nueva paleta Arctic Light; encabezado centrado y cuadro de confianza compacto.
+- Garantía general de 90 días en la web (mantiene exclusiones de batería).
+- Tarjetas compactas, fondo fotográfico azul y botón WhatsApp pequeño.
+- Orden libre con flechas en el panel y botón Guardar orden; catálogo respeta el campo `orden`, sin priorizar destacados.
+- Campos con sugerencias ampliables: marca, modelo por marca, procesador, RAM, almacenamiento, tamaño y resolución.
+- Tecnología de pantalla y función táctil; se almacenan junto con pantalla en la columna existente `pantalla`.
 
-
-V5.1: Hero reorganizado en dos columnas (beneficios y CTA a la derecha); tarjetas de catálogo compactas, cuatro columnas en pantallas amplias. Sin cambios en Supabase ni lógica de inventario.
+## Importante
+- **No se incluyen migraciones ni cambios en la base de datos**. Los productos e imágenes siguen en Supabase.
+- Los campos con sugerencias permiten escribir modelos nuevos que no estén en la lista.
+- La lista de procesadores es una selección inicial amplia, no un inventario exhaustivo de todos los procesadores fabricados.
+- Para guardar el orden es necesario contar con permisos de actualización en Supabase.
+- Antes de anunciar comercialmente los 90 días, asegúrate de actualizar tus políticas y comprobantes de venta.

@@ -49,7 +49,6 @@
       .from("productos")
       .select("*")
       .eq("publicado", true)
-      .order("destacado", { ascending:false })
       .order("orden", { ascending:true })
       .order("created_at", { ascending:false });
 
